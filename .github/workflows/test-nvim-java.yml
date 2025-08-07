@@ -1,0 +1,39 @@
+name: Test nvim-java Plugin
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '21'
+    
+    - name: Setup Neovim
+      uses: rhysd/action-setup-vim@v1
+      with:
+        neovim: true
+        version: nightly
+    
+    - name: Clone starter neovim config
+      run: |
+        git clone https://github.com/nvim-java/starter-nvim-0.12.git ~/.config/nvim
+        
+    - name: Install plenary.nvim for testing
+      run: |
+        mkdir -p ~/.local/share/nvim/site/pack/deps/start/plenary.nvim
+        git clone https://github.com/nvim-lua/plenary.nvim ~/.local/share/nvim/site/pack/deps/start/plenary.nvim
+    
+    - name: Run tests
+      run: |
+        nvim --headless -c "lua require('plenary.test_harness').test_directory('tests')" -c "qa!"
