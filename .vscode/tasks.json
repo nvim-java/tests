@@ -1,0 +1,68 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Setup nvim-java test environment",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+        "mkdir -p ~/.config && [ ! -d ~/.config/nvim-test ] && git clone https://github.com/nvim-java/starter-nvim-0.12.git ~/.config/nvim-test || echo 'nvim-test config already exists'; mkdir -p ~/.local/share/nvim/site/pack/deps/start && [ ! -d ~/.local/share/nvim/site/pack/deps/start/plenary.nvim ] && git clone https://github.com/nvim-lua/plenary.nvim ~/.local/share/nvim/site/pack/deps/start/plenary.nvim || echo 'plenary.nvim already exists'"
+      ],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Run nvim-java tests",
+      "type": "shell",
+      "command": "nvim",
+      "args": [
+        "--headless",
+        "-c",
+        "lua require('plenary.test_harness').test_directory('tests', { init = '~/.config/nvim-test/init.lua' })",
+        "-c",
+        "qa!"
+      ],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": [],
+      "dependsOn": "Setup nvim-java test environment"
+    },
+    {
+      "label": "Run single test file",
+      "type": "shell",
+      "command": "nvim",
+      "args": [
+        "--headless",
+        "-u",
+        "~/.config/nvim-test/init.lua",
+        "-c",
+        "lua require('plenary.test_harness').test_directory('tests')",
+        "-c",
+        "qa!"
+      ],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

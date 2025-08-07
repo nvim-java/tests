@@ -34,6 +34,10 @@ jobs:
         mkdir -p ~/.local/share/nvim/site/pack/deps/start/plenary.nvim
         git clone https://github.com/nvim-lua/plenary.nvim ~/.local/share/nvim/site/pack/deps/start/plenary.nvim
     
+    - name: Wait for Mason packages to install
+      run: |
+        nvim --headless -c "set runtimepath+=$(pwd)" -c "lua require('utils.utils').wait_for_mason_install()" -c "qa!"
+    
     - name: Run tests
       run: |
         nvim --headless -c "lua require('plenary.test_harness').test_directory('tests')" -c "qa!"
