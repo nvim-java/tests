@@ -2,7 +2,7 @@ local List = require("java-core.utils.list")
 
 local M = {}
 
-M.timeout = 10000
+M.timeout = 10000 * 60 * 5
 M.mason_timeout = 1000 * 60 * 5
 M.expected_mason_pkgs = List:new({
 	"java-test",
