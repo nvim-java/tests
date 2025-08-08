@@ -5,12 +5,49 @@ on:
     branches: [ main ]
   pull_request:
   workflow_dispatch:
-  workflow_call:
+    inputs:
+      nvim_java_test_branch:
+        description: 'nvim-java-test branch'
+        required: false
+        type: string
+        default: null
+      nvim_java_core_branch:
+        description: 'nvim-java-core branch'
+        required: false
+        type: string
+        default: null
+      lua_async_await_branch:
+        description: 'lua-async-await branch'
+        required: false
+        type: string
+        default: null
+      nvim_java_refactor_branch:
+        description: 'nvim-java-refactor branch'
+        required: false
+        type: string
+        default: null
+      nvim_java_dap_branch:
+        description: 'nvim-java-dap branch'
+        required: false
+        type: string
+        default: null
+      nvim_java_branch:
+        description: 'nvim-java branch'
+        required: false
+        type: string
+        default: null
   repository_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      NVIM_JAVA_TEST_BRANCH: ${{ inputs.nvim_java_test_branch }}
+      NVIM_JAVA_CORE_BRANCH: ${{ inputs.nvim_java_core_branch }}
+      LUA_ASYNC_AWAIT_BRANCH: ${{ inputs.lua_async_await_branch }}
+      NVIM_JAVA_REFACTOR_BRANCH: ${{ inputs.nvim_java_refactor_branch }}
+      NVIM_JAVA_DAP_BRANCH: ${{ inputs.nvim_java_dap_branch }}
+      NVIM_JAVA_BRANCH: ${{ inputs.nvim_java_branch }}
     
     steps:
     - uses: actions/checkout@v4
@@ -27,9 +64,10 @@ jobs:
         neovim: true
         version: nightly
     
-    - name: Clone starter neovim config
+    - name: Setup neovim config
       run: |
-        git clone https://github.com/nvim-java/starter-nvim-0.12.git ~/.config/nvim
+        mkdir -p ~/.config/nvim
+        cp nvim-config/init.lua ~/.config/nvim/init.lua
         
     - name: Install plenary.nvim for testing
       run: |
