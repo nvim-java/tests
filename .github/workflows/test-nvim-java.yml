@@ -10,52 +10,32 @@ on:
         description: 'nvim-java-test branch'
         required: false
         type: string
+        default: null
       nvim_java_core_branch:
         description: 'nvim-java-core branch'
         required: false
         type: string
+        default: null
       lua_async_await_branch:
         description: 'lua-async-await branch'
         required: false
         type: string
+        default: null
       nvim_java_refactor_branch:
         description: 'nvim-java-refactor branch'
         required: false
         type: string
+        default: null
       nvim_java_dap_branch:
         description: 'nvim-java-dap branch'
         required: false
         type: string
+        default: null
       nvim_java_branch:
         description: 'nvim-java branch'
         required: false
         type: string
-  workflow_call:
-    inputs:
-      nvim_java_test_branch:
-        description: 'nvim-java-test branch'
-        required: false
-        type: string
-      nvim_java_core_branch:
-        description: 'nvim-java-core branch'
-        required: false
-        type: string
-      lua_async_await_branch:
-        description: 'lua-async-await branch'
-        required: false
-        type: string
-      nvim_java_refactor_branch:
-        description: 'nvim-java-refactor branch'
-        required: false
-        type: string
-      nvim_java_dap_branch:
-        description: 'nvim-java-dap branch'
-        required: false
-        type: string
-      nvim_java_branch:
-        description: 'nvim-java branch'
-        required: false
-        type: string
+        default: null
   repository_dispatch:
 
 jobs:
