@@ -1,3 +1,24 @@
+-- Debug function to print all environment variables
+local function print_env_vars()
+	local env_vars = {
+		'LUA_ASYNC_AWAIT_BRANCH',
+		'NVIM_JAVA_CORE_BRANCH',
+		'NVIM_JAVA_DAP_BRANCH',
+		'NVIM_JAVA_REFACTOR_BRANCH',
+		'NVIM_JAVA_TEST_BRANCH',
+		'NVIM_JAVA_BRANCH'
+	}
+	
+	print("=== NVIM-JAVA DEBUG ENVIRONMENT VARIABLES ===")
+	for _, var in ipairs(env_vars) do
+		local value = os.getenv(var)
+		if value and value ~= '' then
+			print(string.format("[DEBUG] %s = %s", var, value))
+		end
+	end
+	print("=== END DEBUG ===")
+end
+
 -- stylua: ignore
 local function get_branch(env_var)
 	local branch = os.getenv(env_var)
@@ -18,6 +39,8 @@ vim.pack.add({
 	{ src = 'https://github.com/nvim-java/nvim-java-test', 			version = get_branch('NVIM_JAVA_TEST_BRANCH') },
 	{ src = 'https://github.com/nvim-java/nvim-java', 					version = get_branch('NVIM_JAVA_BRANCH') },
 })
+
+print_env_vars()
 
 require('mason').setup()
 require('java').setup({ jdk = { auto_install = false } })
