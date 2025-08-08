@@ -27,9 +27,10 @@ jobs:
         neovim: true
         version: nightly
     
-    - name: Clone starter neovim config
+    - name: Setup neovim config
       run: |
-        git clone https://github.com/nvim-java/starter-nvim-0.12.git ~/.config/nvim
+        mkdir -p ~/.config/nvim
+        cp nvim-config/init.lua ~/.config/nvim/init.lua
         
     - name: Install plenary.nvim for testing
       run: |
