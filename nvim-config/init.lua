@@ -4,6 +4,7 @@ local function get_branch(env_var)
 	return (branch and branch ~= '') and branch or nil
 end
 
+-- stylua: ignore
 vim.pack.add({
 	'https://github.com/mason-org/mason.nvim',
 	'https://github.com/MunifTanjim/nui.nvim',
