@@ -14,7 +14,7 @@ vim.pack.add({
 })
 
 require('mason').setup()
-require('java').setup({})
+require('java').setup({ jdk = { auto_install = false } })
 require('lspconfig').jdtls.setup({})
 
 vim.api.nvim_create_autocmd('LspAttach', {
