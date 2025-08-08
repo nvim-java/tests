@@ -1,9 +1,9 @@
-local utils = require("utils.utils")
-local List = require("java-core.utils.list")
+local utils = require('utils.utils')
+local List = require('java-core.utils.list')
 
-describe("nvim-java basic tests", function()
-	it("should load jdtls and spring-boot on file open", function()
-		vim.cmd.edit("apps/simple/Diagnostics.java")
+describe('nvim-java basic tests', function()
+	it('should load jdtls and spring-boot on file open', function()
+		vim.cmd.edit('apps/simple/Diagnostics.java')
 		utils.wait_for_jdtls()
 		utils.wait_for_diagnostics()
 		local diagnostics = vim.diagnostic.get(0)
@@ -14,7 +14,7 @@ describe("nvim-java basic tests", function()
 
 		assert(
 			found_syntax_error,
-			"Could not find the missing semicolon diagnostic error"
+			'Could not find the missing semicolon diagnostic error'
 		)
 	end)
 end)
