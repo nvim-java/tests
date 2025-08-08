@@ -10,8 +10,30 @@ on:
         description: 'nvim-java-test branch'
         required: false
         type: string
-      mason_nvim_branch:
-        description: 'mason.nvim branch'
+      nvim_java_core_branch:
+        description: 'nvim-java-core branch'
+        required: false
+        type: string
+      lua_async_await_branch:
+        description: 'lua-async-await branch'
+        required: false
+        type: string
+      nvim_java_refactor_branch:
+        description: 'nvim-java-refactor branch'
+        required: false
+        type: string
+      nvim_java_dap_branch:
+        description: 'nvim-java-dap branch'
+        required: false
+        type: string
+      nvim_java_branch:
+        description: 'nvim-java branch'
+        required: false
+        type: string
+  workflow_call:
+    inputs:
+      nvim_java_test_branch:
+        description: 'nvim-java-test branch'
         required: false
         type: string
       nvim_java_core_branch:
@@ -30,42 +52,22 @@ on:
         description: 'nvim-java-dap branch'
         required: false
         type: string
-      nui_nvim_branch:
-        description: 'nui.nvim branch'
-        required: false
-        type: string
-      nvim_lspconfig_branch:
-        description: 'nvim-lspconfig branch'
-        required: false
-        type: string
-      nvim_dap_branch:
-        description: 'nvim-dap branch'
-        required: false
-        type: string
-      spring_boot_nvim_branch:
-        description: 'spring-boot.nvim branch'
-        required: false
-        type: string
       nvim_java_branch:
         description: 'nvim-java branch'
         required: false
         type: string
+  repository_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      LUA_ASYNC_AWAIT_BRANCH: ${{ inputs.lua_async_await_branch }}
-      MASON_NVIM_BRANCH: ${{ inputs.mason_nvim_branch }}
-      NUI_NVIM_BRANCH: ${{ inputs.nui_nvim_branch }}
-      NVIM_DAP_BRANCH: ${{ inputs.nvim_dap_branch }}
-      NVIM_JAVA_BRANCH: ${{ inputs.nvim_java_branch }}
-      NVIM_JAVA_CORE_BRANCH: ${{ inputs.nvim_java_core_branch }}
-      NVIM_JAVA_DAP_BRANCH: ${{ inputs.nvim_java_dap_branch }}
-      NVIM_JAVA_REFACTOR_BRANCH: ${{ inputs.nvim_java_refactor_branch }}
       NVIM_JAVA_TEST_BRANCH: ${{ inputs.nvim_java_test_branch }}
-      NVIM_LSPCONFIG_BRANCH: ${{ inputs.nvim_lspconfig_branch }}
-      SPRING_BOOT_NVIM_BRANCH: ${{ inputs.spring_boot_nvim_branch }}
+      NVIM_JAVA_CORE_BRANCH: ${{ inputs.nvim_java_core_branch }}
+      LUA_ASYNC_AWAIT_BRANCH: ${{ inputs.lua_async_await_branch }}
+      NVIM_JAVA_REFACTOR_BRANCH: ${{ inputs.nvim_java_refactor_branch }}
+      NVIM_JAVA_DAP_BRANCH: ${{ inputs.nvim_java_dap_branch }}
+      NVIM_JAVA_BRANCH: ${{ inputs.nvim_java_branch }}
     
     steps:
     - uses: actions/checkout@v4

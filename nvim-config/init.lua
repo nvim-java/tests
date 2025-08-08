@@ -1,16 +1,16 @@
 -- stylua: ignore
 vim.pack.add({
-	{ src = 'https://github.com/nvim-java/nvim-java-test', 			version = os.getenv('NVIM_JAVA_TEST_BRANCH') },
-	{ src = 'https://github.com/mason-org/mason.nvim', 					version = os.getenv('MASON_NVIM_BRANCH') },
-	{ src = 'https://github.com/nvim-java/nvim-java-core', 			version = os.getenv('NVIM_JAVA_CORE_BRANCH') },
+	'https://github.com/mason-org/mason.nvim',
+	'https://github.com/MunifTanjim/nui.nvim',
+	'https://github.com/neovim/nvim-lspconfig',
+	'https://github.com/mfussenegger/nvim-dap',
+	'https://github.com/JavaHello/spring-boot.nvim',
 	{ src = 'https://github.com/nvim-java/lua-async-await', 		version = os.getenv('LUA_ASYNC_AWAIT_BRANCH') },
-	{ src = 'https://github.com/nvim-java/nvim-java-refactor', 	version = os.getenv('NVIM_JAVA_REFACTOR_BRANCH') },
-	{ src = 'https://github.com/nvim-java/nvim-java-dap', 			version = os.getenv('NVIM_JAVA_DAP_BRANCH') },
-	{ src = 'https://github.com/MunifTanjim/nui.nvim', 					version = os.getenv('NUI_NVIM_BRANCH') },
-	{ src = 'https://github.com/neovim/nvim-lspconfig', 				version = os.getenv('NVIM_LSPCONFIG_BRANCH') },
-	{ src = 'https://github.com/mfussenegger/nvim-dap', 				version = os.getenv('NVIM_DAP_BRANCH') },
-	{ src = 'https://github.com/JavaHello/spring-boot.nvim', 		version = os.getenv('SPRING_BOOT_NVIM_BRANCH') },
 	{ src = 'https://github.com/nvim-java/nvim-java', 					version = os.getenv('NVIM_JAVA_BRANCH') },
+	{ src = 'https://github.com/nvim-java/nvim-java-core', 			version = os.getenv('NVIM_JAVA_CORE_BRANCH') },
+	{ src = 'https://github.com/nvim-java/nvim-java-dap', 			version = os.getenv('NVIM_JAVA_DAP_BRANCH') },
+	{ src = 'https://github.com/nvim-java/nvim-java-refactor', 	version = os.getenv('NVIM_JAVA_REFACTOR_BRANCH') },
+	{ src = 'https://github.com/nvim-java/nvim-java-test', 			version = os.getenv('NVIM_JAVA_TEST_BRANCH') },
 })
 
 require('mason').setup()
