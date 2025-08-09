@@ -68,11 +68,6 @@ jobs:
       run: |
         mkdir -p ~/.config/nvim
         cp nvim-config/init.lua ~/.config/nvim/init.lua
-        
-    - name: Install plenary.nvim for testing
-      run: |
-        mkdir -p ~/.local/share/nvim/site/pack/deps/start/plenary.nvim
-        git clone https://github.com/nvim-lua/plenary.nvim ~/.local/share/nvim/site/pack/deps/start/plenary.nvim
     
     - name: Wait for Mason packages to install
       run: |

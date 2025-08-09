@@ -6,17 +6,17 @@ local function print_env_vars()
 		'NVIM_JAVA_DAP_BRANCH',
 		'NVIM_JAVA_REFACTOR_BRANCH',
 		'NVIM_JAVA_TEST_BRANCH',
-		'NVIM_JAVA_BRANCH'
+		'NVIM_JAVA_BRANCH',
 	}
-	
-	print("=== NVIM-JAVA DEBUG ENVIRONMENT VARIABLES ===")
+
+	print('=== NVIM-JAVA DEBUG ENVIRONMENT VARIABLES ===')
 	for _, var in ipairs(env_vars) do
 		local value = os.getenv(var)
 		if value and value ~= '' then
-			print(string.format("[DEBUG] %s = %s", var, value))
+			print(string.format('[DEBUG] %s = %s', var, value))
 		end
 	end
-	print("=== END DEBUG ===")
+	print('=== END DEBUG ===')
 end
 
 -- stylua: ignore
@@ -27,6 +27,7 @@ end
 
 -- stylua: ignore
 vim.pack.add({
+	'https://github.com/nvim-lua/plenary.nvim',
 	'https://github.com/mason-org/mason.nvim',
 	'https://github.com/MunifTanjim/nui.nvim',
 	'https://github.com/neovim/nvim-lspconfig',
