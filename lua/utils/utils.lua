@@ -12,14 +12,21 @@ M.expected_mason_pkgs = List:new({
 	'spring-boot-tools',
 })
 
-function M.wait_for_jdtls()
-	vim.print('waiting for jdtls')
-	local jdtls_loaded = vim.wait(M.timeout, function()
-		local clients = vim.lsp.get_clients({ name = 'jdtls' })
+function M.wait_for_lsp(name)
+	local loaded = vim.wait(M.timeout, function()
+		local clients = vim.lsp.get_clients({ name = name })
 		return #clients > 0
 	end, 100)
 
-	assert(jdtls_loaded, 'JDTLS did not load before the timeout')
+	assert(loaded, name .. ' did not load before the timeout')
+end
+
+function M.wait_for_spring_boot()
+	M.wait_for_lsp('spring-boot')
+end
+
+function M.wait_for_jdtls()
+	M.wait_for_lsp('jdtls')
 end
 
 function M.wait_for_diagnostics(bufnr)

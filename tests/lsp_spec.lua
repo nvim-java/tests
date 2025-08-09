@@ -5,6 +5,7 @@ describe('nvim-java basic tests', function()
 	it('should load jdtls and spring-boot on file open', function()
 		vim.cmd.edit('apps/simple/LspTest.java')
 		utils.wait_for_jdtls()
+		utils.wait_for_spring_boot()
 		local lsps = vim.lsp.get_clients()
 
 		local lsp_names = List:new(lsps):map(function(lsp)
